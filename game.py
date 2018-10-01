@@ -59,7 +59,12 @@ def did_win(player):
 
 
 def is_board_full():
-    raise NotImplementedError
+    board_is_full = False
+    for row in BOARD:
+        if row[0] != '-' and row[1] != '-' and row[2] != '-':
+            board_is_full = True
+
+    return board_is_full
 
 
 def is_legal_move(token, x_coord, y_coord):
