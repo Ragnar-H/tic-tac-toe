@@ -21,8 +21,16 @@ def game_loop():
             print("Nobody has won yet, keep looping")
 
 
+BOARD = [
+    ['-', '-', '-'],
+    ['-', '-', '-'],
+    ['-', '-', '-']
+]
+
+
 def print_board():
-    raise NotImplementedError
+    for row in BOARD:
+        print(row)
 
 
 def get_current_player():
