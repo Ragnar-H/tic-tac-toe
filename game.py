@@ -68,6 +68,7 @@ def is_board_full():
 
 
 def is_legal_move(token, x_coord, y_coord):
+    # TODO this should probably be used somewhere...
     raise NotImplementedError
 
 
