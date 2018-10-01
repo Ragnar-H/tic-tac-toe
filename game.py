@@ -35,7 +35,7 @@ def print_board():
 
 
 def get_current_player():
-    current_player = raw_input('whose turn is it? \n')
+    current_player = raw_input('whose turn is it?\n')
     return current_player
 
 
