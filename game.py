@@ -1,3 +1,4 @@
+# coding=utf-8
 def game_loop():
     # The game should run until we return
     while True:
