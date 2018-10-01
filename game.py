@@ -46,7 +46,7 @@ def get_coordinates():
 
 
 def place_token(token, x_coord, y_coord):
-    raise NotImplementedError
+    BOARD[x_coord][y_coord] = token
 
 
 def did_win(player):
