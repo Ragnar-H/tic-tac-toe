@@ -40,8 +40,8 @@ def get_current_player():
 
 
 def get_coordinates():
-    x_coord = raw_input('which column?\n')
-    y_coord = raw_input('which row?\n')
+    x_coord = int(raw_input('which column?\n'))
+    y_coord = int(raw_input('which row?\n'))
     return [x_coord, y_coord]
 
 
