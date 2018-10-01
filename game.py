@@ -35,7 +35,8 @@ def print_board():
 
 
 def get_current_player():
-    raise NotImplementedError
+    current_player = raw_input('whose turn is it? \n')
+    return current_player
 
 
 def get_coordinates():
