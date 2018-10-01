@@ -40,7 +40,9 @@ def get_current_player():
 
 
 def get_coordinates():
-    raise NotImplementedError
+    x_coord = raw_input('which column?\n')
+    y_coord = raw_input('which row?\n')
+    return [x_coord, y_coord]
 
 
 def place_token(token, x_coord, y_coord):
