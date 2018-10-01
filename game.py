@@ -50,7 +50,12 @@ def place_token(token, x_coord, y_coord):
 
 
 def did_win(player):
-    raise NotImplementedError
+    player_has_won = False
+    for row in BOARD:
+        if row[0] == player and row[1] == player and row[2] == player:
+            player_has_won = True
+
+    return player_has_won
 
 
 def is_board_full():
