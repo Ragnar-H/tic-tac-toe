@@ -43,9 +43,13 @@ def get_coordinates():
     x_coord = raw_input('which column?\n')
     while not x_coord.isdigit():
         x_coord = raw_input('please input an integer?\n')
+    while x_coord not in range(0,len(BOARD)):
+        x_coord = int(raw_input('please select a valid column?\n'))
     y_coord = raw_input('which row?\n')
     while not y_coord.isdigit():
         y_coord = raw_input('please input an integer?\n')
+    while y_coord not in range(0,len(BOARD)):
+        y_coord = int(raw_input('please select a valid row?\n'))
     return [x_coord, y_coord]
 
 
