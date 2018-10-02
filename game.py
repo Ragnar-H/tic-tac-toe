@@ -40,8 +40,12 @@ def get_current_player():
 
 
 def get_coordinates():
-    x_coord = int(raw_input('which column?\n'))
-    y_coord = int(raw_input('which row?\n'))
+    x_coord = raw_input('which column?\n')
+    while not x_coord.isdigit():
+        x_coord = raw_input('please input an integer?\n')
+    y_coord = raw_input('which row?\n')
+    while not y_coord.isdigit():
+        y_coord = raw_input('please input an integer?\n')
     return [x_coord, y_coord]
 
 
