@@ -63,10 +63,10 @@ def did_win(player):
 
 
 def is_board_full():
-    board_is_full = False
+    board_is_full = True
     for row in BOARD:
-        if row[0] != '-' and row[1] != '-' and row[2] != '-':
-            board_is_full = True
+        if row[0] == '-' or row[1] == '-' or row[2] == '-':
+            board_is_full = False
 
     return board_is_full
 
