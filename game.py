@@ -48,13 +48,29 @@ def get_current_player(num):
 
 def get_coordinates():
     x_coord = raw_input('which column\n')
-    while not x_coord.isdigit() and int(x_coord) not in range(0, len(BOARD)):
-        x_coord = int(raw_input('please select a valid column?\n'))
+    while not is_valid_input(x_coord):
+        x_coord = raw_input('please select a valid column?\n')
     y_coord = raw_input('which row?\n')
-    while not y_coord.isdigit() and int(y_coord) not in range(0, len(BOARD)):
-        y_coord = int(raw_input('please select a valid row?\n'))
+    while not is_valid_input(y_coord):
+        y_coord = raw_input('please select a valid row?\n')
 
+    # We know this is a valid input
+    # Lets cast it to Int before we return it
+    x_coord = int(x_coord)
+    y_coord = int(y_coord)
     return [x_coord, y_coord]
+
+
+def is_valid_input(coordinate):
+    if not coordinate.isdigit():
+        return False
+    # Note the int(coordinate).
+    # We need to cast to Int before 
+    if not int(coordinate) in range(0, len(BOARD)):
+        return False
+
+    # All is well
+    return True
 
 
 def place_token(token, x_coord, y_coord):
