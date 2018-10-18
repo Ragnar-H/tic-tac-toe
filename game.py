@@ -1,11 +1,11 @@
 # coding=utf-8
 def game_loop():
     # The game should run until we return
-    player_turn = 0
+    game_turn = 0
     while True:
         print_board()
 
-        current_player = get_current_player(player_turn)
+        current_player = get_current_player(game_turn)
         print("It is "+ current_player + "'s turn\n")
 
         coordinates = get_coordinates()
@@ -22,7 +22,7 @@ def game_loop():
             return
         else:
             print("Nobody has won yet, keep looping")
-            player_turn += 1
+            game_turn += 1
 
 
 BOARD = [
