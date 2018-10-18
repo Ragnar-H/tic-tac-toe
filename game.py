@@ -1,10 +1,12 @@
 # coding=utf-8
 def game_loop():
     # The game should run until we return
+    game_turn = 0
     while True:
         print_board()
 
-        current_player = get_current_player()
+        current_player = get_current_player(game_turn)
+        print("It is "+ current_player + "'s turn\n")
 
         coordinates = get_coordinates()
 
@@ -20,6 +22,7 @@ def game_loop():
             return
         else:
             print("Nobody has won yet, keep looping")
+            game_turn += 1
 
 
 BOARD = [
@@ -29,23 +32,27 @@ BOARD = [
 ]
 
 
+
 def print_board():
     for row in BOARD:
         print(row)
 
 
-def get_current_player():
-    current_player = raw_input('whose turn is it?\n')
-    return current_player
+def get_current_player(num):
+    if num % 2 == 0:
+        return "X"
+    else:
+        return "O"
 
 
 def get_coordinates():
-    x_coord = raw_input('which column?\n')
+    x_coord = raw_input('Choose a column?\n')
     while not x_coord.isdigit():
         x_coord = raw_input('please input an integer?\n')
     while x_coord not in range(0,len(BOARD)):
         x_coord = int(raw_input('please select a valid column?\n'))
-    y_coord = raw_input('which row?\n')
+
+    y_coord = raw_input('Choose a row?\n')
     while not y_coord.isdigit():
         y_coord = raw_input('please input an integer?\n')
     while y_coord not in range(0,len(BOARD)):
