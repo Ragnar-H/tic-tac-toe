@@ -7,7 +7,7 @@ def game_loop():
 
         #who's turn is it
         current_player = get_current_player(game_turn)
-        print("It is "+ current_player + "'s turn\n")
+        print("It is " + current_player + "'s turn\n")
 
         coordinates = get_coordinates()
 
@@ -17,7 +17,7 @@ def game_loop():
             print('{} has won the game 🏅'.format(current_player))
             return
 
-        elif is_board_full(game_turn) == True:
+        elif is_board_full(game_turn):
             print("The game is over. No winners!")
             return
 
@@ -73,11 +73,9 @@ def did_win(player):
 
     return player_has_won
 
+
 def is_board_full(game_turn):
-    if game_turn == len(BOARD)**2:
-        return True
-    else:
-        return False
+    return game_turn == len(BOARD)**2
 
 
 def is_legal_move(token, x_coord, y_coord):
