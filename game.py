@@ -9,17 +9,7 @@ def game_loop():
         current_player = get_current_player(game_turn)
         print("It is "+ current_player + "'s turn\n")
 
-        #get the coordinate to place the token
-        while True:
-
-            coordinates = get_coordinates()
-
-            #check to see if there already is a token
-            if check_token(coordinates[0], coordinates[1]) == True:
-                break
-            else:
-                print("That place is taken, try again.")
-                continue
+        coordinates = get_coordinates()
 
         place_token(current_player, coordinates[0], coordinates[1])
 
@@ -27,8 +17,9 @@ def game_loop():
             print('{} has won the game 🏅'.format(current_player))
             return
 
-        elif game_turn == len(BOARD)**2:
+        elif is_board_full(game_turn) == True:
             print("The game is over. No winners!")
+            return
 
         else:
             print("Nobody has won yet, keep looping")
@@ -69,13 +60,6 @@ def get_coordinates():
         y_coord = int(raw_input('please select a valid row?\n'))
     return [x_coord, y_coord]
 
-def check_token(x_coord, y_coord):
-    if BOARD[x_coord][y_coord] == 'X' or BOARD[x_coord][y_coord] == 'O':
-        return False
-    else:
-        return True
-
-
 
 def place_token(token, x_coord, y_coord):
     BOARD[x_coord][y_coord] = token
@@ -88,6 +72,13 @@ def did_win(player):
             player_has_won = True
 
     return player_has_won
+
+def is_board_full(game_turn):
+    if game_turn == len(BOARD)**2:
+        return True
+    else:
+        return False
+
 
 def is_legal_move(token, x_coord, y_coord):
     # TODO this should probably be used somewhere...
