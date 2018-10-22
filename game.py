@@ -1,7 +1,6 @@
 # coding=utf-8
 print("Let's play a game.\n")
 
-
 def game_loop():
     # The game should run until we return
     game_turn = 0
@@ -103,6 +102,7 @@ def did_win(player):
 def test_win(player, row):
     if row[0] == player and row[1] == player and row[2] == player:
         return True
+
 
 def is_board_full(game_turn):
     return game_turn == len(BOARD)**2
