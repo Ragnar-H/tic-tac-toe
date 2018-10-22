@@ -1,4 +1,7 @@
 # coding=utf-8
+print("Let's play a game.\n")
+
+
 def game_loop():
     # The game should run until we return
     game_turn = 0
@@ -13,6 +16,7 @@ def game_loop():
 
         place_token(current_player, coordinates[0], coordinates[1])
 
+        print(did_win(current_player))
         if did_win(current_player):
             print('{} has won the game 🏅'.format(current_player))
             return
@@ -31,7 +35,6 @@ BOARD = [
     ['-', '-', '-'],
     ['-', '-', '-']
 ]
-
 
 
 def print_board():
@@ -67,12 +70,39 @@ def place_token(token, x_coord, y_coord):
 
 def did_win(player):
     player_has_won = False
+
+    '#test rows'
     for row in BOARD:
-        if row[0] == player and row[1] == player and row[2] == player:
+        if test_win(player, row):
             player_has_won = True
+
+    '#test column'
+    for i in range(len(BOARD)):
+            column = []
+            for x in BOARD:
+                column.append(x[i])
+            if test_win(player, column):
+                player_has_won = True
+
+    '#test diagonal'
+    x_test2 = []
+    y_test2 = []
+    for i in range(len(BOARD)):
+        x_test = BOARD[i]
+        x_test2.append(x_test[i])
+
+        y_test = BOARD[i]
+        y_test2.append(y_test[-(i+1)])
+
+    if test_win(player, x_test2) or test_win(player, y_test2):
+        player_has_won = True
 
     return player_has_won
 
+
+def test_win(player, row):
+    if row[0] == player and row[1] == player and row[2] == player:
+        return True
 
 def is_board_full(game_turn):
     return game_turn == len(BOARD)**2
