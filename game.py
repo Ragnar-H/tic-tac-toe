@@ -114,7 +114,13 @@ def did_win(player):
 
 
 def same_token_in_row(player, row):
-    if row[0] == player and row[1] == player and row[2] == player:
+    tokens_in_row = 0
+
+    for y in row:
+        if y == player:
+            tokens_in_row += 1
+
+    if tokens_in_row == len(row):
         return True
 
 
