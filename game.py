@@ -120,8 +120,7 @@ def same_token_in_row(player, row):
         if y == player:
             tokens_in_row += 1
 
-    if tokens_in_row == len(row):
-        return True
+    return tokens_in_row == len(row)
 
 
 def is_board_full(game_turn):
