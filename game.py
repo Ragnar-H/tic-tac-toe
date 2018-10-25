@@ -4,8 +4,8 @@ BOARD = []
 
 
 def create_board():
-    '#create the board'
-    while True:
+    # create the board
+    while size > 3 or size < 5:
         try:
             size = int(input("What size should the game be? (3-5): "))
         except ValueError:
@@ -28,7 +28,7 @@ def game_loop():
     while True:
         print_board()
 
-        #who's turn is it
+        # who's turn is it
         current_player = get_current_player(game_turn)
         print("It is " + current_player + "'s turn\n")
 
@@ -86,7 +86,7 @@ def did_win(player):
 
     '#test rows'
     for row in BOARD:
-        if test_win(player, row):
+        if same_token_in_row(player, row):
             player_has_won = True
 
     '#test column'
@@ -94,7 +94,7 @@ def did_win(player):
             column = []
             for x in BOARD:
                 column.append(x[i])
-            if test_win(player, column):
+            if same_token_in_row(player, column):
                 player_has_won = True
 
     '#test diagonal'
@@ -107,13 +107,13 @@ def did_win(player):
         y_test = BOARD[i]
         y_test2.append(y_test[-(i+1)])
 
-    if test_win(player, x_test2) or test_win(player, y_test2):
+    if same_token_in_row(player, x_test2) or same_token_in_row(player, y_test2):
         player_has_won = True
 
     return player_has_won
 
 
-def test_win(player, row):
+def same_token_in_row(player, row):
     if row[0] == player and row[1] == player and row[2] == player:
         return True
 
