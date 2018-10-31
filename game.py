@@ -1,25 +1,7 @@
 # coding=utf-8
 print("Let's play a game.\n")
+
 BOARD = []
-
-
-def create_board():
-    # create the board
-    while size > 3 or size < 5:
-        try:
-            size = int(input("What size should the game be? (3-5): "))
-        except ValueError:
-            print("Oops! seems like that is not a number. Try again...")
-            continue
-        if size < 3 or size > 5:
-            print("Oops! seems like those numbers are not within limits. Try again...")
-            continue
-        break
-
-    for i in range(size):
-        BOARD.append([])
-        for j in range(size):
-            BOARD[i].append('_')
 
 
 def game_loop():
@@ -48,6 +30,26 @@ def game_loop():
         else:
             print("Nobody has won yet, keep looping")
             game_turn += 1
+
+
+def create_board():
+    # create the board
+    size = 3
+    while size > 3 or size < 5:
+        try:
+            size = int(input("What size should the game be? (3-5): "))
+        except ValueError:
+            print("Oops! seems like that is not a number. Try again...")
+            continue
+        if size < 3 or size > 5:
+            print("Oops! seems like those numbers are not within limits. Try again...")
+            continue
+        break
+
+    for i in range(size):
+        BOARD.append([])
+        for j in range(size):
+            BOARD[i].append('_')
 
 
 def print_board():
