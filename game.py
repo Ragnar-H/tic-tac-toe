@@ -166,7 +166,7 @@ def is_board_full(game_turn):
 def is_legal_move(x_coord, y_coord):
     tic = BOARD[x_coord][y_coord]
 
-    if tic == ' X ' or tic == ' O ':
+    if tic == 'X' or tic == 'O':
         return False
     else:
         return True
