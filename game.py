@@ -28,6 +28,8 @@ def game_loop():
 
         place_token(current_player, coordinates[0], coordinates[1])
 
+        game_turn += 1
+
         if did_win(current_player):
             print('{} has won the game 🏅'.format(current_player))
             print_board()
@@ -40,7 +42,8 @@ def game_loop():
 
         else:
             print("Nobody has won yet, keep looping")
-            game_turn += 1
+            print("Game turn: " + str(game_turn))
+
 
 
 def player_setting():
