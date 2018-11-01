@@ -55,17 +55,11 @@ def player_setting():
 
 def create_board():
     # create the board
-    size = 3
-    while size > 3 or size < 5:
-        try:
-            size = int(input("What size should the game be? (3-5): "))
-        except ValueError:
-            print("Oops! seems like that is not a number. Try again...")
-            continue
-        if size < 3 or size > 5:
-            print("Oops! seems like those numbers are not within limits. Try again...")
-            continue
-        break
+    size = raw_input("What size should the game be? (3-5): ")
+    while not is_valid_input(size, 3, 6):
+        size = raw_input("What size should the game be? (3-5): ")
+
+    size = int(size)
 
     for i in range(size):
         BOARD.append([])
