@@ -1,4 +1,5 @@
 # coding=utf-8
+import random
 print("Let's play a game.\n")
 
 BOARD = []
@@ -17,7 +18,13 @@ def game_loop():
         current_player = get_current_player(game_turn)
         print("It is " + current_player + "'s turn\n")
 
-        coordinates = get_coordinates()
+        if no_player == 0:
+            coordinates = ai_coordinates()
+        elif no_player == 1 and current_player == "O":
+            print("Computers turn")
+            coordinates = ai_coordinates()
+        else:
+            coordinates = player_coordinates()
 
         place_token(current_player, coordinates[0], coordinates[1])
 
@@ -78,7 +85,7 @@ def get_current_player(num):
         return "O"
 
 
-def get_coordinates():
+def player_coordinates():
     x_coord = raw_input('which column\n')
     while not is_valid_input(x_coord):
         x_coord = raw_input('please select a valid column?\n')
@@ -166,5 +173,14 @@ def is_legal_move(token, x_coord, y_coord):
         return True
 
 
+def ai_coordinates():
+    x_coord = random.randint(0, len(BOARD)-1)
+    y_coord = random.randint(0, len(BOARD)-1)
+
+    while not is_legal_move(x_coord, y_coord):
+        x_coord = random.randint(0, len(BOARD)-1)
+        y_coord = random.randint(0, len(BOARD)-1)
+
+    return [x_coord, y_coord]
 # Run the program
 game_loop()
