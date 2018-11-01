@@ -163,7 +163,7 @@ def is_board_full(game_turn):
     return game_turn == len(BOARD)**2
 
 
-def is_legal_move(token, x_coord, y_coord):
+def is_legal_move(x_coord, y_coord):
     tic = BOARD[x_coord][y_coord]
 
     if tic == ' X ' or tic == ' O ':
@@ -181,5 +181,6 @@ def ai_coordinates():
         y_coord = random.randint(0, len(BOARD)-1)
 
     return [x_coord, y_coord]
+
 # Run the program
 game_loop()
