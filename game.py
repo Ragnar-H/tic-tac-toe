@@ -81,17 +81,23 @@ def get_current_player(num):
 
 
 def player_coordinates():
-    x_coord = raw_input('which column\n')
-    while not is_valid_input(x_coord):
-        x_coord = raw_input('please select a valid column?\n')
-    y_coord = raw_input('which row?\n')
-    while not is_valid_input(y_coord):
-        y_coord = raw_input('please select a valid row?\n')
+    while True:
+        x_coord = raw_input('Choose a row?\n')
+        while not is_valid_input(x_coord, 1, len(BOARD)+1):
+            x_coord = raw_input('please select a valid row?\n')
 
-    # We know this is a valid input
-    # Lets cast it to Int before we return it
-    x_coord = int(x_coord)
-    y_coord = int(y_coord)
+        y_coord = raw_input("Choose a column?")
+        while not is_valid_input(y_coord, 1, len(BOARD)+1):
+            y_coord = raw_input('please select a valid column?\n')
+
+        x_coord = int(x_coord)-1
+        y_coord = int(y_coord)-1
+
+        if not is_legal_move(x_coord, y_coord):
+            print"That spot is taken, try again.\n"
+            continue
+        break
+
     return [x_coord, y_coord]
 
 
