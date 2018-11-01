@@ -7,6 +7,9 @@ BOARD = []
 def game_loop():
     # The game should run until we return
     game_turn = 0
+    no_player = player_setting()
+
+    create_board()
     while True:
         print_board()
 
@@ -30,6 +33,17 @@ def game_loop():
         else:
             print("Nobody has won yet, keep looping")
             game_turn += 1
+
+
+def player_setting():
+    player = raw_input("How many players? (0-2)")
+    print(player)
+
+    while not is_valid_input(player, 0, 2):
+        player = raw_input("Please choose between 1 and 2 players?")
+
+    player = int(player)
+    return player
 
 
 def create_board():
@@ -79,14 +93,16 @@ def get_coordinates():
     return [x_coord, y_coord]
 
 
-def is_valid_input(coordinate):
+def is_valid_input(coordinate, min, max):
     if not coordinate.isdigit():
         return False
     # Note the int(coordinate).
     # We need to cast to Int before 
-    if not int(coordinate) in range(0, len(BOARD)):
+    if not int(coordinate) in range(min, max):
         return False
 
+    if not is_legal_move(get_current_player(), coordinate[0], coordinate[1]):
+        return False
     # All is well
     return True
 
@@ -142,10 +158,13 @@ def is_board_full(game_turn):
 
 
 def is_legal_move(token, x_coord, y_coord):
-    # TODO this should probably be used somewhere...
-    raise NotImplementedError
+    tic = BOARD[x_coord][y_coord]
+
+    if tic == ' X ' or tic == ' O ':
+        return False
+    else:
+        return True
 
 
 # Run the program
-create_board()
 game_loop()
