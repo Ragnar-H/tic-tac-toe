@@ -100,16 +100,14 @@ def player_coordinates():
     return [x_coord, y_coord]
 
 
-def is_valid_input(coordinate, min, max):
-    if not coordinate.isdigit():
+def is_valid_input(input, min, max):
+    if not input.isdigit():
         return False
     # Note the int(coordinate).
-    # We need to cast to Int before 
-    if not int(coordinate) in range(min, max):
+    # We need to cast to Int before
+    if not int(input) in range(min, max):
         return False
 
-    if not is_legal_move(get_current_player(), coordinate[0], coordinate[1]):
-        return False
     # All is well
     return True
 
