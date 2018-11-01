@@ -45,7 +45,6 @@ def game_loop():
 
 def player_setting():
     player = raw_input("How many players? (0-2)")
-    print(player)
 
     while not is_valid_input(player, 0, 2):
         player = raw_input("Please choose between 1 and 2 players?")
@@ -57,7 +56,7 @@ def player_setting():
 def create_board():
     # create the board
     size = raw_input("What size should the game be? (3-5): ")
-    while not is_valid_input(size, 3, 6):
+    while not is_valid_input(size, 3, 5):
         size = raw_input("What size should the game be? (3-5): ")
 
     size = int(size)
@@ -83,11 +82,11 @@ def get_current_player(num):
 def player_coordinates():
     while True:
         x_coord = raw_input('Choose a row?\n')
-        while not is_valid_input(x_coord, 1, len(BOARD)+1):
+        while not is_valid_input(x_coord, 1, len(BOARD)):
             x_coord = raw_input('please select a valid row?\n')
 
         y_coord = raw_input("Choose a column?")
-        while not is_valid_input(y_coord, 1, len(BOARD)+1):
+        while not is_valid_input(y_coord, 1, len(BOARD)):
             y_coord = raw_input('please select a valid column?\n')
 
         x_coord = int(x_coord)-1
@@ -106,7 +105,8 @@ def is_valid_input(input, min, max):
         return False
     # Note the int(coordinate).
     # We need to cast to Int before
-    if not int(input) in range(min, max):
+    # max has +1 because range() excludes the last number. This makes it more intuitive
+    if not int(input) in range(min, max+1):
         return False
 
     # All is well
