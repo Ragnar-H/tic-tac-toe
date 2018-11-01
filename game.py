@@ -28,13 +28,14 @@ def game_loop():
 
         place_token(current_player, coordinates[0], coordinates[1])
 
-        print(did_win(current_player))
         if did_win(current_player):
             print('{} has won the game 🏅'.format(current_player))
+            print_board()
             return
 
         elif is_board_full(game_turn):
             print("The game is over. No winners!")
+            print_board()
             return
 
         else:
